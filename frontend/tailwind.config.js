@@ -11,6 +11,6 @@ export default {
   },
   plugins: [daisyui],
   daisyui:{
-    themes:["dracula","dim"],
+    themes:["coffee","dracula","dim"],
   },
 }
