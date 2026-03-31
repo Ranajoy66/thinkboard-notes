@@ -20,7 +20,7 @@ ThinkBoard allows users to create, edit, and manage notes efficiently with a cle
 
 ## 🖼️ UI Preview
 
-![ThinkBoard UI](./assests/preview_notesapp.jpg)
+![ThinkBoard UI](./assets/preview_notesapp.jpg)
 
 ---
 
