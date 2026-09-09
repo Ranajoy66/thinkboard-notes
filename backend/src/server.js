@@ -6,6 +6,7 @@ import noteRoutes from "./routes/noteRoutes.js"
 import { connectDB } from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js";
 
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config()
 
@@ -26,6 +27,9 @@ app.use(rateLimiter)
 // })
 
 app.use("/api/notes", noteRoutes)
+app.use("/api/auth", authRoutes);
+
+// console.log(process.env.JWT_SECRET);
 
 connectDB().then(() => {
     app.listen(PORT, () => {

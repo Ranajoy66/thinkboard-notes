@@ -5,19 +5,85 @@ import toast from "react-hot-toast";
 import api from "../lib/axios";
 
 const NoteCard = ({ note, setNotes }) => {
-    const handleDelete = async (e, id) => {
-        e.preventDefault(); //get rid of navigation behaviour
+    const handleDelete = (e, id) => {
+        e.preventDefault()
+        e.stopPropagation()
 
-        if (!window.confirm("Are you sure you want to delete this note?")) return;
+        toast.custom(
+            (t) => (
+                <div
+                    className={`
+                    w-80 rounded-xl
+                    border border-base-300
+                    bg-base-100
+                    p-4
+                    shadow-2xl
+                    ${t.visible ? "toast-enter" : "toast-exit"}
+                `}
+                >
+                    <div className="flex items-start gap-3">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-error/10">
+                            <Trash2Icon className="size-4 text-error" />
+                        </div>
 
-        try {
-            await api.delete(`/notes/${id}`)
-            setNotes((prev) => prev.filter(note => note._id !== id)) //get rid of the deleted one from the array
-            toast.success("Note deleted sucessfully")
-        } catch (error) {
-            console.log("Error in handleDelete", error)
-            toast.error("Failed to delete note");
-        }
+                        <div className="flex-1">
+                            <p className="text-sm font-semibold">
+                                Are you sure you want to delete this note?
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div className="mt-4 flex justify-end gap-2">
+                        <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="
+                            btn btn-ghost btn-sm
+                            transition-all duration-200
+                            hover:scale-105
+                        "
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            onClick={async () => {
+                                toast.dismiss(t.id)
+
+                                try {
+                                    await api.delete(`/notes/${id}`)
+
+                                    setNotes((prevNotes) =>
+                                        prevNotes.filter(
+                                            (note) => note._id !== id
+                                        )
+                                    )
+
+                                    toast.success("Note deleted successfully")
+                                } catch (error) {
+                                    console.error(
+                                        "Error deleting note:",
+                                        error
+                                    )
+
+                                    toast.error("Failed to delete note")
+                                }
+                            }}
+                            className="
+                            btn btn-error btn-sm text-white
+                            transition-all duration-200
+                            hover:scale-105
+                        "
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            ),
+            {
+                duration: Infinity,
+            }
+        )
     }
 
     return (
