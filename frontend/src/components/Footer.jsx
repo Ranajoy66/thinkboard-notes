@@ -57,12 +57,12 @@ const Footer = () => {
 
                             <div className="mt-4 flex flex-col gap-3 text-sm text-slate-500">
 
-                                <a
-                                    href="#features"
+                                <Link
+                                    to="/features"
                                     className="hover:text-white transition"
                                 >
                                     Features
-                                </a>
+                                </Link>
 
                                 <Link
                                     to="/register"
@@ -93,26 +93,26 @@ const Footer = () => {
 
                             <div className="mt-4 flex flex-col gap-3 text-sm text-slate-500">
 
-                                <a
-                                    href="#about"
+                                <Link
+                                    to="/about"
                                     className="hover:text-white transition"
                                 >
                                     About
-                                </a>
+                                </Link>
 
-                                <a
-                                    href="#why"
+                                <Link
+                                    to="/why-thinkboard"
                                     className="hover:text-white transition"
                                 >
                                     Why ThinkBoard?
-                                </a>
+                                </Link>
 
-                                <a
+                                {/* <a
                                     href="#quote"
                                     className="hover:text-white transition"
                                 >
                                     Philosophy
-                                </a>
+                                </a> */}
 
                             </div>
 
