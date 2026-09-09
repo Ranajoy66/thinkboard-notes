@@ -28,7 +28,7 @@ ThinkBoard allows users to register, log in, and securely manage their personal 
 🎯 Simple and intuitive interface
 
 🖼️ UI Preview
-![ThinkBoard UI](./assests/new_notes_app_preview.jpg)
+![ThinkBoard UI](./assets/new_notes_app_preview.jpg)
 
 🛠️ Tech Stack
 Frontend
